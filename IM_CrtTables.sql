@@ -1,10 +1,8 @@
 use MaskDB;
 
-DROP TABLE IF EXISTS payments;
-DROP TABLE IF EXISTS orderdetails;
-DROP TABLE IF EXISTS orders;
+/*DROP TABLE IF EXISTS logging;*/
 DROP TABLE IF EXISTS parts;
-DROP TABLE IF EXISTS customers;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS partlines;
 
 create table users(
