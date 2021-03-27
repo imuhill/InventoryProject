@@ -1,97 +1,61 @@
-show databases;
-
 use MaskDB;
-
-select database();
-
-show tables;
 
 DROP TABLE IF EXISTS payments;
 DROP TABLE IF EXISTS orderdetails;
 DROP TABLE IF EXISTS orders;
-DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS parts;
 DROP TABLE IF EXISTS customers;
-DROP TABLE IF EXISTS productlines;
+DROP TABLE IF EXISTS partlines;
 
-create table `customers`(
-    `customerNumber` INT AUTO_INCREMENT, 
-    `customerName` VARCHAR(50) NOT NULL, 
-    `contactLastName` VARCHAR(50) NOT NULL, 
-    `contactFirstName` VARCHAR(50) NOT NULL, 
-    `phone` VARCHAR(20) NOT NULL, 
-    `addressLine1` VARCHAR(50) NOT NULL, 
-    `addressLine2` VARCHAR(50) DEFAULT NULL, 
-    `city` VARCHAR(50) NOT NULL, 
-    `state` VARCHAR(50) DEFAULT NULL, 
-    `postalCode` VARCHAR(15) DEFAULT NULL, 
-    `country` VARCHAR(50) NOT NULL, 
-    `salesRepEmployeeNumber` INT DEFAULT NULL, 
-    `creditLimit` DECIMAL(10,2) DEFAULT NULL,
+create table users(
+    userNumber INT AUTO_INCREMENT,
+    FirstName VARCHAR(50) NOT NULL,
+    LastName VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    password VARCHAR(20) NOT NULL,
+    phone VARCHAR(20) DEFAULT NULL,
     PRIMARY KEY (customerNumber));
 
-create table payments(
-    checkNumber VARCHAR(50), 
-    paymentDate DATE NOT NULL, 
-    amount DECIMAL(10,2) NOT NULL,
-    customerNumber INT NOT NULL,
-    PRIMARY KEY (checkNumber),
-    CONSTRAINT payedBy
-    FOREIGN KEY (customerNumber)
-    REFERENCES customers (customerNumber)
-);
+create table partlines(
+    partLine VARCHAR(50), 
+    textDescription VARCHAR(4000) NOT NULL, 
+    htmlDescription MEDIUMTEXT DEFAULT NULL, 
+    image VARCHAR(150) DEFAULT NULL,
+    PRIMARY KEY (partLine));
 
-create table orders(
-    orderNumber INT AUTO_INCREMENT, 
-    orderDate DATE NOT NULL, 
-    requiredDate DATE NOT NULL, 
-    shippedDate DATE DEFAULT NULL, 
-    status VARCHAR(15) NOT NULL, 
-    comments TEXT DEFAULT NULL,
-    customerNumber INT(11) NOT NULL,
-    PRIMARY KEY (orderNumber),
-    CONSTRAINT orderedFrom
-    FOREIGN KEY (customerNumber)
-    REFERENCES customers (customerNumber)
-        ON DELETE CASCADE
-);
-
-create table `productlines`(
-    `productLine` VARCHAR(50), 
-    `textDescription` VARCHAR(4000) NOT NULL, 
-    `htmlDescription` MEDIUMTEXT DEFAULT NULL, 
-    `image` MEDIUMBLOB DEFAULT NULL,
-    PRIMARY KEY (productLine));
-
-create table products(
-    productCode VARCHAR(15), 
-    productName VARCHAR(70) NOT NULL, 
-    productScale VARCHAR(10) NOT NULL, 
-    productVendor VARCHAR(50) NOT NULL, 
-    productDescription TEXT DEFAULT NULL, 
-    quantityInStock SMALLINT NOT NULL, 
-    buyPrice DECIMAL(10,2) NOT NULL, 
-    MSRP DECIMAL(10,2) NOT NULL,
-    productLine VARCHAR(50) NOT NULL,
-    PRIMARY KEY (productCode),
+create table parts(
+    partCode VARCHAR(15), 
+    partName VARCHAR(70) NOT NULL,
+    partStorage VARCHAR(50) DEFAULT NULL, 
+    partDescription TEXT DEFAULT NULL,
+    semester VARCHAR(30) NOT NULL,
+    currentStock SMALLINT NOT NULL,
+    initialStock SMALLINT NOT NULL,
+    finalStock SMALLINT DEFAULT NULL,
+    perStudent SMALLINT NOT NULL,
+    buyPrice DECIMAL(10,2) NOT NULL,
+    partLine VARCHAR(50) NOT NULL,
+    qualityCheck VARCHAR(4000) DEFAULT NULL,
+    PRIMARY KEY (partCode),
     CONSTRAINT soldBy
-    FOREIGN KEY (productLine)
-    REFERENCES productlines (productLine)
+    FOREIGN KEY (partLine)
+    REFERENCES partlines (partLine)
         ON DELETE CASCADE
 );
 
-create table orderdetails(
-    orderNumber INT(11) NOT NULL,
-    productCode VARCHAR(15) NOT NULL,
-    quantityOrdered INT(11) NOT NULL,
-    priceEach DECIMAL(10,2) NOT NULL,
-    orderLineNumber SMALLINT(6) NOT NULL,
-    PRIMARY KEY (orderNumber, productCode),
-    KEY productCode (productCode),
+/*create table logging(
+    userNumber INT(11) NOT NULL,
+    partCode VARCHAR(15) NOT NULL,
+    quantityModified INT(11) NOT NULL,
+    logDescription VARCHAR(400) NOT NULL,
+    actionOf VARCHAR(40) NOT NULL,
+    PRIMARY KEY (userNumber, partCode),
+    KEY partCode (partCode),
+    CONSTRAINT fromA
+    FOREIGN KEY (userNumber)
+    REFERENCES users (userNumber),
     CONSTRAINT containsA
-    FOREIGN KEY (orderNumber)
-    REFERENCES orders (orderNumber),
-    CONSTRAINT hasA
-    FOREIGN KEY (productCode)
-    REFERENCES products (productCode)
+    FOREIGN KEY (partCode)
+    REFERENCES parts (partCode)
         ON DELETE CASCADE
-);
+);*/
