@@ -12,7 +12,7 @@ create table users(
     email VARCHAR(50) NOT NULL,
     password VARCHAR(20) NOT NULL,
     phone VARCHAR(20) DEFAULT NULL,
-    PRIMARY KEY (customerNumber));
+    PRIMARY KEY (userNumber));
 
 create table partlines(
     partLine VARCHAR(50), 
