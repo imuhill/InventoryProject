@@ -1,4 +1,4 @@
-use MaskDB;
+use Inventory;
 
 /*DROP TABLE IF EXISTS logging;*/
 DROP TABLE IF EXISTS parts;
