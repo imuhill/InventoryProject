@@ -24,8 +24,8 @@
             <body>
             <form action="form.php" method="post">
                 <pre>
-                    Email: <input type="text" name="productLine">
-                    Password: <input type="text" name="productDesc">
+                    Email: <input type="text" name="email">
+                    Password: <input type="text" name="password">
                     <input type="submit" value="SUBMIT">
                 </pre>
             </form>
