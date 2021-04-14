@@ -16,7 +16,6 @@
 
      //create HTML body
      echo <<< _END
-
         <html>
             <head>
                 <link rel = "stylesheet" type = "text/css" href = "table.css" media = "screen"/>
@@ -29,6 +28,7 @@
                     <input type="submit" value="SUBMIT">
                 </pre>
             </form>
+        </html>
     _END;
 
 ?>
