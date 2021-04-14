@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1,h5 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-image: url('/images/squirrel.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-text-white">
+  <div class="w3-display-middle w3-jumbo">
+    <p>Welcome!</p>
+  </div>
+  <div class="w3-display-topleft w3-container w3-xlarge">
+    <p><button onclick="document.getElementById('login').style.display='block'" class="w3-button w3-black">login</button></p>
+    <p><button onclick="document.getElementById('register').style.display='block'" class="w3-button w3-black">register</button></p>
+  </div>
+  <div class="w3-display-bottomleft w3-container">
+    <p class="w3-xlarge">monday - friday 10-23 | saturday 14-02</p>
+    <p class="w3-large">42 village St, New York</p>
+    <p>powered by <a href="https://hbu.edu/science-and-engineering/" target="_blank">my Mom</a></p>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div id="login" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-black w3-display-container">
+      <span onclick="document.getElementById('login').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>Username</h1>
+    </div>
+    <div class="w3-container">
+      <h5><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*email" required name="email"></h5>
+    </div>
+    <div class="w3-container w3-black">
+      <h1>Password</h1>
+    </div>
+    <div class="w3-container">
+      <h5><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*password" required name="password"></h5>
+    </div>
+    <div class="w3-container w3-black w3-display-container">
+      <form action="/action_page.php" target="_blank"></form>
+      <p><button class="w3-button" type="submit">Login</button></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Register Modal -->
+<div id="register" class="w3-modal">
+  <div class="w3-modal-content w3-animate-zoom">
+    <div class="w3-container w3-black">
+      <span onclick="document.getElementById('register').style.display='none'" class="w3-button w3-display-topright w3-large">x</span>
+      <h1>Register</h1>
+    </div>
+    <div class="w3-container">
+      <p>Register for the database here:</p>
+      <form action="/action_page.php" target="_blank">
+        <p>First Name: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*Name" required name="fName"></p>
+        <p>Last Name: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*Name" required name="lName"></p>
+        <p>Username: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*email" required name="email"></p>
+        <p>Password: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*password" required name="password"></p>
+        <p>Verify Password: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*password" required name="vPassword"></p>
+        <p>Phone Number: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*phone" required name="phone"></p>
+        <p><button class="w3-button" type="submit">register</button></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+
