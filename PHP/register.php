@@ -9,15 +9,15 @@
     //Check if the page is loaded because the user is adding a customer
     if(isset($_POST['checked'])){
         $email = sanitizeMySQL($con, $_POST['uEmail']);
-        $lastname = sanitizeMySQL($con, $_POST['coLN']);
-        $firstname = sanitizeMySQL($con, $_POST['coFN']);
+        $lastname = sanitizeMySQL($con, $_POST['uLN']);
+        $firstname = sanitizeMySQL($con, $_POST['uFN']);
         $password = sanitizeMySQL($con, $_POST['pw']);
         $verify = sanitizeMySQL($con, $_POST['pwV']);
         $phone = sanitizeMySQL($con, $_POST['phone']);
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
         if($password == $verify)
-            add_user($con, $firstname, $lastname, $username, $hash, $phone);
+            add_user($con, $firstname, $lastname, $email, $hash, $phone);
 
         else
             die("Passwords do not match");
@@ -39,26 +39,26 @@
                     <form method = "post" action = "register.php">
                         <tr>
                             <td>*Email: </td>
-                            <td><input type = "text" name = "uEmail" placeholder = "email*" required = 'required'></td>
+                            <td><input type = "text" name = "uEmail" placeholder = "email" required = 'required'></td>
                         </tr>
                         <tr>
                             <td>*First Name: </td>
-                            <td><input type = "text" name = "uFN" placeholder = "name*"required = 'required'></td>
+                            <td><input type = "text" name = "uFN" placeholder = "first name"required = 'required'></td>
                         </tr>
                         <tr>
                             <td>*Last Name: </td>
-                            <td><input type = "text" name = "uLN" placeholder = "name*"required = 'required'></td>
+                            <td><input type = "text" name = "uLN" placeholder = "last name"required = 'required'></td>
                         </tr>
                         <tr>
                             <td>*Password: </td>
-                            <td><input type = "text" name = "pw" placeholder = "password*" required = 'required'></td>
+                            <td><input type = "text" name = "pw" placeholder = "password" required = 'required'></td>
                         </tr>
                         <tr>
                             <td>*Verify Password: </td>
-                            <td><input type = "text" name = "pwV" placeholder = "password*" required = 'required'></td>
+                            <td><input type = "text" name = "pwV" placeholder = "password" required = 'required'></td>
                         </tr>
                         <tr>
-                            <td>Phone: </td>
+                            <td>*Phone: </td>
                             <td><input type = "text" name = "phone" placeholder = "123-456-7890"></td>
                         </tr>
                         <tr>
@@ -96,7 +96,7 @@
         //prepare statements are very common ways of doing things
         $stmt = $con->prepare('INSERT INTO users VALUES(?, ?, ?, ?, ?)');
 
-        $stmt->bind_param("ssss", $fn, $ln, $un, $pw, $ph);
+        $stmt->bind_param("sssss", $fn, $ln, $un, $pw, $ph);
         $stmt->execute();
     }
 ?>
