@@ -21,7 +21,7 @@ create table users(
     FirstName VARCHAR(50) NOT NULL,
     LastName VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
-    password VARCHAR(35) NOT NULL,
+    password VARCHAR(100) NOT NULL,
     phone VARCHAR(20) DEFAULT NULL,
     permissionNumber INT DEFAULT 0,
     PRIMARY KEY (userNumber),
