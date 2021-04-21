@@ -2,7 +2,7 @@
 echo <<< _END
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="masks.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="inventory.css" media="screen"/>
 </head>
 
 <body>
@@ -28,11 +28,11 @@ echo <<< _END
 
     <!-- Sign Up Form -->
   
-    <!-- Remind Passowrd -->
+    <!-- Remind Password -->
     <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
+      <a class="underlineHover" href="forgotPassword.php">Forgot Password?</a>
+      <a class="underlineHover" href="register.php">Register?</a>
     </div>
-
   </div>
 </div>
 
