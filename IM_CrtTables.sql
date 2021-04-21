@@ -39,7 +39,7 @@ create table suppliers(
 );
 
 create table parts(
-    partCode VARCHAR(15), 
+    partCode INT AUTO_INCREMENT, 
     partName VARCHAR(70) NOT NULL,
     partStorage VARCHAR(50) DEFAULT NULL, 
     partDescription TEXT DEFAULT NULL,
@@ -53,9 +53,49 @@ create table parts(
     PRIMARY KEY (partCode)
 );
 
+INSERT INTO parts(
+    partName, semester, currentStock, initialStock, perStudent, buyPrice)
+    VALUES("Light Blue New Toggle Switch", "S21", 2, 2, 0, 1.0);
+
+INSERT INTO parts(
+    partName, semester, currentStock, initialStock, perStudent, buyPrice)
+    VALUES("Dark Blue New Toggle Switch", "S21", 49, 49, 0, 1.0);
+
+INSERT INTO parts(
+    partName, semester, currentStock, initialStock, perStudent, buyPrice)
+    VALUES("Red New Toggle Switch", "S21", 4, 4, 0, 1.0);
+
+INSERT INTO parts(
+    partName, semester, currentStock, initialStock, perStudent, buyPrice)
+    VALUES("Orange New Toggle Switch", "S21", 5, 5, 0, 1.0);
+
+INSERT INTO parts(
+    partName, semester, currentStock, initialStock, perStudent, buyPrice)
+    VALUES("Light Blue Old Toggle Switch", "S21", 17, 17, 0, 1.0);
+
+INSERT INTO parts(
+    partName, semester, currentStock, initialStock, perStudent, buyPrice)
+    VALUES("Dark Blue Old Toggle Switch", "S21", 9, 9, 0, 1.0);
+
+INSERT INTO parts(
+    partName, semester, currentStock, initialStock, perStudent, buyPrice)
+    VALUES("Whisker Switch", "S21", 12, 12, 0, 1.0);
+
+INSERT INTO parts(
+    partName, semester, currentStock, initialStock, perStudent, buyPrice)
+    VALUES("Relay", "S21", 78, 78, 0, 1.0);
+
+INSERT INTO parts(
+    partName, semester, currentStock, initialStock, perStudent, buyPrice)
+    VALUES("Diode", "S21", 250, 250, 0, 1.0);
+
+INSERT INTO parts(
+    partName, semester, currentStock, initialStock, perStudent, buyPrice)
+    VALUES("Transistor", "S21", 250, 250, 0, 1.0);
+
 create table partdetails(
     supplier VARCHAR(50),
-    partCode VARCHAR(15),
+    partCode INT,
     PRIMARY KEY (supplier, partCode),
     CONSTRAINT soldBy
     FOREIGN KEY (supplier)
@@ -120,4 +160,4 @@ INSERT INTO permissions(
         ON DELETE CASCADE
 );*/
 
-alter table users modify column password VARCHAR(100);
+/*alter table users modify column password VARCHAR(100);*/
