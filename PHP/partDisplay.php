@@ -67,7 +67,7 @@
             <div class = "header"> Product Lines </div>
             <table cellspacing = "0">
                 <tr>
-                    <td> Product Line </td>
+                    <td> Supplier </td>
                     <td> Description </td>
                     <td> Action </td>
                 </tr>
