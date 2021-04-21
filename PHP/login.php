@@ -2,7 +2,7 @@
 echo <<< _END
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="inventory.css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="http://localhost/InventoryProject/CSS/inventory.css" media="screen"/>
 </head>
 
 <body>

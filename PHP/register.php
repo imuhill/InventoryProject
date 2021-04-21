@@ -8,6 +8,7 @@
 
     //Check if the page is loaded because the user is adding a customer
     if(isset($_POST['checked'])){
+        echo "Inside the checked if<br>";
         $email = sanitizeMySQL($con, $_POST['uEmail']);
         $lastname = sanitizeMySQL($con, $_POST['uLN']);
         $firstname = sanitizeMySQL($con, $_POST['uFN']);
@@ -16,8 +17,11 @@
         $phone = sanitizeMySQL($con, $_POST['phone']);
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        if($password == $verify)
+        if($password === $verify)
+        {
+            echo "Inside the if password checker<br>";
             add_user($con, $firstname, $lastname, $email, $hash, $phone);
+        }
 
         else
             die("Passwords do not match");
@@ -28,7 +32,7 @@
     echo <<<_END
         <html>
             <head>
-                <link rel = "stylesheet" type = "text/css" href = "table.css" media = "screen"/>
+                <link rel = "stylesheet" type = "text/css" href = "http://localhost/InventoryProject/CSS/table.css" media = "screen"/>
             </head>
 
             <body>
@@ -47,15 +51,15 @@
                         </tr>
                         <tr>
                             <td>*Last Name: </td>
-                            <td><input type = "text" name = "uLN" placeholder = "last name"required = 'required'></td>
+                            <td><input type = "text" name = "uLN" placeholder = "last name" required = 'required'></td>
                         </tr>
                         <tr>
                             <td>*Password: </td>
-                            <td><input type = "text" name = "pw" placeholder = "password" required = 'required'></td>
+                            <td><input type = "password" name = "pw" placeholder = "password" required = 'required'></td>
                         </tr>
                         <tr>
                             <td>*Verify Password: </td>
-                            <td><input type = "text" name = "pwV" placeholder = "password" required = 'required'></td>
+                            <td><input type = "password" name = "pwV" placeholder = "password" required = 'required'></td>
                         </tr>
                         <tr>
                             <td>*Phone: </td>
@@ -91,12 +95,26 @@
         return $var;
     }
 
-    function add_user($con, $fn, $ln, $un, $pw, $ph)
+    function add_user($con, $fn, $ln, $em, $pw, $ph)
     {
         //prepare statements are very common ways of doing things
-        $stmt = $con->prepare('INSERT INTO users VALUES(?, ?, ?, ?, ?)');
+        //$stmt = $con->prepare('INSERT INTO users(FirstName, LastName, email, password, phone) VALUES(?, ?, ?, ?, ?)');
+        
+        $query = "INSERT INTO users(FirstName, LastName, email, password, phone) VALUES ('$fn', '$ln', '$em', '$pw', '$ph')";
+        echo "$query<br>";
 
-        $stmt->bind_param("sssss", $fn, $ln, $un, $pw, $ph);
-        $stmt->execute();
+        $result = $con->query($query);
+
+        if(!result) echo "Unable to insert";
+        
+        echo "$fn<br>";
+        echo "$ln<br>";
+        echo "$em<br>";
+        echo "$pw<br>";
+        echo "$ph<br>";
+
+       // $stmt->bind_param("ssss", $fn, $ln, $em, $pw, $ph);
+        //$stmt->execute();
+        echo "Added the user<br>";
     }
 ?>

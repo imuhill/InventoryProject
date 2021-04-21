@@ -16,7 +16,7 @@
     echo <<<_END
         <html>
             <head>
-                <link rel = "stylesheet" type = "text/css" href = "table.css" media = "screen"/>
+                <link rel = "stylesheet" type = "text/css" href = "http://localhost/InventoryProject/CSS/table.css" media = "screen"/>
             </head>
 
             <body>
