@@ -14,7 +14,7 @@ echo <<< _END
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="http://localhost/InventoryManagement/images/squirrel.jpg" id="icon" alt="Mask Icon" />
+      <img src="http://localhost/InventoryProject/images/squirrel.jpg" id="icon" alt="Mask Icon" />
     </div>
 
     <!-- Login Form -->
