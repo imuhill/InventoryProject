@@ -3,8 +3,8 @@ use InventoryDB;
 /*DROP TABLE IF EXISTS logging;*/
 DROP TABLE IF EXISTS partdetails;
 DROP TABLE IF EXISTS parts;
-DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS suppliers;
+DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS permissions;
 
 create table permissions(
