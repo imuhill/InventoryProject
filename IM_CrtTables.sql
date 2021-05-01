@@ -31,6 +31,10 @@ create table users(
         ON DELETE CASCADE
 );
 
+INSERT INTO users(
+    FirstName, LastName, email, password, permissionNumber)
+    VALUES("Lester", "Leonares", "lleonares@hbu.edu", "$2y$10$KenGQOzPhsdIVCxHESiI9OpvwYmWUXahDfA/kZ74yKPFFBrW2EiBi", 8);
+
 create table suppliers(
     supplier VARCHAR(50), 
     textDescription VARCHAR(4000) NOT NULL,

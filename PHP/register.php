@@ -8,24 +8,28 @@
 
     //Check if the page is loaded because the user is adding a customer
     if(isset($_POST['checked'])){
-        echo "Inside the checked if<br>";
-        $email = sanitizeMySQL($con, $_POST['uEmail']);
-        $lastname = sanitizeMySQL($con, $_POST['uLN']);
-        $firstname = sanitizeMySQL($con, $_POST['uFN']);
-        $password = sanitizeMySQL($con, $_POST['pw']);
+        $em = sanitizeMySQL($con, $_POST['uEmail']);
+        $ln = sanitizeMySQL($con, $_POST['uLN']);
+        $fn = sanitizeMySQL($con, $_POST['uFN']);
+        $pw = sanitizeMySQL($con, $_POST['pw']);
         $verify = sanitizeMySQL($con, $_POST['pwV']);
-        $phone = sanitizeMySQL($con, $_POST['phone']);
+        $ph = sanitizeMySQL($con, $_POST['phone']);
         $hash = password_hash($password, PASSWORD_DEFAULT);
 
-        if($password === $verify)
+        if($pw === $verify)
         {
-            echo "Inside the if password checker<br>";
-            add_user($con, $firstname, $lastname, $email, $hash, $phone);
+            $query = "INSERT INTO users(FirstName, LastName, email, password, phone) VALUES ('$fn', '$ln', '$em', '$pw', '$ph')";
+    
+            $result = $con->query($query);
+    
+            if(!result){
+                die("Unable to insert");
+            }
+            else header('Location: login.php');
         }
 
         else
             die("Passwords do not match");
-        //header('Location: .php');
     }
 
     //create HTML file body
@@ -93,28 +97,5 @@
         $var = $con->real_escape_string($var);
         $var = sanitizeString($var);
         return $var;
-    }
-
-    function add_user($con, $fn, $ln, $em, $pw, $ph)
-    {
-        //prepare statements are very common ways of doing things
-        //$stmt = $con->prepare('INSERT INTO users(FirstName, LastName, email, password, phone) VALUES(?, ?, ?, ?, ?)');
-        
-        $query = "INSERT INTO users(FirstName, LastName, email, password, phone) VALUES ('$fn', '$ln', '$em', '$pw', '$ph')";
-        echo "$query<br>";
-
-        $result = $con->query($query);
-
-        if(!result) echo "Unable to insert";
-        
-        echo "$fn<br>";
-        echo "$ln<br>";
-        echo "$em<br>";
-        echo "$pw<br>";
-        echo "$ph<br>";
-
-       // $stmt->bind_param("ssss", $fn, $ln, $em, $pw, $ph);
-        //$stmt->execute();
-        echo "Added the user<br>";
     }
 ?>

@@ -20,7 +20,7 @@ echo <<< _END
     <!-- Login Form -->
     <div id="login">  
       <form action="authenticate.php" method ="post">
-          <input type="text" id="login" class="fadeIn second" name="login" placeholder="username*" required autocomplete="off">
+          <input type="text" id="login" class="fadeIn second" name="email" placeholder="email*" required autocomplete="off">
           <input type="password" id="password" class="fadeIn third" name="pswd" placeholder="password*" required autocomplete="off">
           <input type="submit" class="fadeIn fourth" value="Log In">
       </form>
