@@ -31,25 +31,26 @@
       $_SESSION['lastname'] = $ln;
       
       echo htmlspecialchars("$fn $ln : Hi $fn, you are now logged in as '$un'");
-      die("<p><a href = 'supplierForm.php'>Click here to continue</a></p>");
+      //die("<p><a href = 'supplierForm.php'>Click here to continue</a></p>");
+      header('Location: supplierForm.php.php');
     }
       
     else die("Invalid username/password combination");
- }
+  }
 
   function sanitizeString($var)
-    {
-        if(get_magic_quotes_gpc())
-            $var = stripslashes($var);
-        $var = strip_tags($var);
-        $var = htmlentities($var);
-        return $var;
-    }
+  {
+      if(get_magic_quotes_gpc())
+          $var = stripslashes($var);
+      $var = strip_tags($var);
+      $var = htmlentities($var);
+      return $var;
+  }
 
-    function sanitizeMySQL($con, $var)
-    {
-        $var = $con->real_escape_string($var);
-        $var = sanitizeString($var);
-        return $var;
-    }
+  function sanitizeMySQL($con, $var)
+  {
+      $var = $con->real_escape_string($var);
+      $var = sanitizeString($var);
+      return $var;
+  }
 ?>
