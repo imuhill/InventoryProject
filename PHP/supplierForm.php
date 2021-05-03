@@ -1,16 +1,5 @@
 <?php
     require_once 'loginfo.php';
-
-    session_start();
-
-    if(isset($_SESSION['firstname']))
-    {
-        $fname = $_SESSION['firstname'];
-        $lname = $_SESSION['lastname'];
-
-        echo "Welcome back $fname $lname.<br>This is the product form page!<br>";
-    }
-
     $con = new mysqli($hn, $username, $password, $db);
     
     //check connection to database

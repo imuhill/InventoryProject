@@ -19,7 +19,7 @@
     $row = $result->fetch_array(MYSQLI_ASSOC);
     $fn  = $row['FirstName'];
     $ln  = $row['LastName'];
-    $un  = $row['email'];
+    $em  = $row['email'];
     $pw  = $row['password'];
       
     if (password_verify(str_replace("'", "", $pw_temp), $pw))
@@ -28,9 +28,10 @@
 
       $_SESSION['firstname'] = $fn;
       $_SESSION['lastname'] = $ln;
+      $_SESSION['email'] = $em;
       
-      echo htmlspecialchars("$fn $ln : Hi $fn, you are now logged in as '$un'");
-      die("<p><a href = 'supplierForm.php'>Click here to continue</a></p>");
+      echo htmlspecialchars("$fn $ln : Hi $fn, you are now logged in as '$em'");
+      die("<p><a href = 'landingPage.php'>Click here to continue</a></p>");
     }
       
     else die("Invalid username/password combination");
