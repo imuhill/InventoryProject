@@ -9,10 +9,10 @@
 
   if(!empty($_POST['login']) && !empty($_POST['pswd']))
   {
-    $un_temp = sanitizeMySQL($con, $_POST['login']);   //note the login needs to be sanitized first .. very important
+    $em_temp = sanitizeMySQL($con, $_POST['login']);   //note the login needs to be sanitized first .. very important
     $pw_temp = sanitizeMySQL($con, $_POST['pswd']);
  
-    $query   = "SELECT * FROM users WHERE email='$un_temp'";
+    $query   = "SELECT * FROM users WHERE email='$em_temp'";
     $result  = $con->query($query);
 
     if ($result->num_rows != 1) die("User not found");
