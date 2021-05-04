@@ -43,25 +43,38 @@
                     <p><br>Hello, <b>$fname $lname</b>, welcome to the Landing Page.<br>Please select what action you would like to do.</p>
                 </div>
                 <div id="formFooter" class = "fadeIn third">
-                    <a class = "underlineHover" href = "http://localhost/InventoryProject/HTML/homePage.html" style = "">Log Out</a><br>
     _END;
 
-        if($insert === 1){
-            echo "<a class = 'underlineHover' href = 'supplierForm.php'>Supplier Form</a><br>";
-        }
+    $query1   = "SELECT * FROM users WHERE email='$email'";
+    $result  = $con->query($query1);
 
-        if($delete === 1){
-            
-        }
+    if ($result->num_rows != 1) die("User not found");
 
-        if($update === 1){
-            
-        }
+    $row1 = $result->fetch_array(MYSQLI_ASSOC);
+    $pn  = $row1['permissionNumber'];
+
+    $query2   = "SELECT * FROM permissions WHERE permissionNumber='$pn'";
+    $result2  = $con->query($query2);
+
+    $row2 = $result2->fetch_array(MYSQLI_ASSOC);
+    $insert  = $row2['inserting'];
+    $delete  = $row2['deleting'];
+    $update  = $row2['updating'];
+
+    if($insert == 1){
+        echo "<a class = 'underlineHover' href = 'supplierForm.php'>INSERT</a><br>";
+    }
+
+    if($delete == 1){
+        echo "<a class = 'underlineHover' href = 'supplierForm.php'>DELETE</a><br>";
+    }
+
+    if($update == 1){
+        echo "<a class = 'underlineHover' href = 'supplierForm.php'>UPDATE</a><br>";
+    }
 
     echo <<< _END
-                    <a class = "underlineHover" href = "supplierForm.php">Supplier Form</a><br>
-                    <a class = "underlineHover" href = "partDisplay.php">Part Display</a><br>
-
+                    <a class = "underlineHover" href = "logOut.php" style = "">Log Out</a><br>
                 </div>
             </div>
         </div>

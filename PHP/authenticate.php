@@ -30,8 +30,7 @@
       $_SESSION['lastname'] = $ln;
       $_SESSION['email'] = $em;
       
-      echo htmlspecialchars("$fn $ln : Hi $fn, you are now logged in as '$em'");
-      die("<p><a href = 'landingPage.php'>Click here to continue</a></p>");
+      header('Location: landingPage.php');
     }
       
     else die("Invalid username/password combination");
