@@ -53,10 +53,15 @@
     $result  = $con->query($query);
 
     $row = $result->fetch_array(MYSQLI_ASSOC);
+    $read  = $row['reading'];
     $insert  = $row['inserting'];
     $delete  = $row['deleting'];
     $update  = $row['updating'];
 
+    if($read == 1){
+        echo "<a class = 'underlineHover' href = 'readForm.php'>READ</a><br>";
+    }
+    
     if($insert == 1){
         echo "<a class = 'underlineHover' href = 'insertForm.php'>INSERT</a><br>";
     }

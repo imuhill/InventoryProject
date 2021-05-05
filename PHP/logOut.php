@@ -8,5 +8,6 @@
     {
         echo "<div class = 'center'>You cannot log out because you are not logged in</div>";
         die("<p><a href = 'http://localhost/InventoryProject/HTML/homePage.html'>Click here to continue</a></p>");
+        destroySession();
     }
 ?>
