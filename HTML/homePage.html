@@ -65,12 +65,12 @@ body, html {height: 100%}
     </div>
     <div class="w3-container">
       <p>Register for the database here:</p>
-      <form action="/action_page.php" target="_blank">
+      <form action="http://localhost/InventoryProject/PHP/register.php" method = "post">
         <p>First Name: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*Name" required name="fName"></p>
         <p>Last Name: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*Name" required name="lName"></p>
         <p>Username: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*email" required name="email"></p>
-        <p>Password: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*password" required name="password"></p>
-        <p>Verify Password: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*password" required name="vPassword"></p>
+        <p>Password: <input class="w3-input w3-padding-16 w3-border" type="password" placeholder="*password" required name="password"></p>
+        <p>Verify Password: <input class="w3-input w3-padding-16 w3-border" type="password" placeholder="*password" required name="vPassword"></p>
         <p>Phone Number: <input class="w3-input w3-padding-16 w3-border" type="text" placeholder="*phone" required name="phone"></p>
         <p style="text-align: center;"><button class="w3-button" type="submit" style = "border: 3px solid #000000;">register</button></p>
       </form>

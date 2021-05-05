@@ -18,7 +18,7 @@
         die("Error connecting to DB" . $con -> connect_error);
 
     //Check if the page is loaded because the user is adding a product
-    if(!empty($_POST['insert'])){
+    if(isset($_POST['insert'])){
         $pCode = get_post($con, $_POST['pCode']);
         $pName = get_post($con, $_POST['pName']);
         $semester = get_post($con, $_POST['semester']);
@@ -29,6 +29,7 @@
         $query = "INSERT INTO parts (partName, semester, currentStock, initialStock, perStudent, buyPrice) VALUES ('$pName', '$semester', '$cStock', '$iStock', '$perStudent', '$bPrice')";
 
         $result = $con->query($query);
+        echo "<br>Query: $query<br>Result: $result<br>";
 
         if(!result) echo "Unable to insert";
     }

@@ -18,16 +18,25 @@
         die("Error connecting to DB" . $con -> connect_error);
 
     //Check if the page is loaded because the user is adding a product
-    if(!empty($_POST['update'])){
+    if(isset($_POST['update'])){
         $permNumber = sanitizeMySQL($con, $_POST['pn']);
         $uNum = sanitizeMySQL($con, $_POST['un']);
         $query = "UPDATE users SET permissionNumber = $permNumber WHERE userNumber = $uNum;";
-        echo "$query";
 
         $result = $con->query($query);
-        echo "<br>Result: $result<br>";
+        echo "<br>Query: $query<br>Result: $result<br>";
 
         if(!result) echo "Unable to insert";
+    }
+
+    if(isset($_POST['delete'])){
+        $uNum = $_POST['un'];
+        $query = "DELETE FROM users WHERE userNumber = $uNum;";
+
+        $result = $con->query($query);
+        echo "<br>Query: $query<br>Result: $result<br>";
+        
+        if(!result) echo "Unable to delete";
     }
 
     //create HTML file body
@@ -58,7 +67,8 @@
                     <td> Email </td>
                     <td> Phone Number </td>
                     <td> Permission Number </td>
-                    <td></td>
+                    <td> Update </td>
+                    <td> Delete </td>
                 </tr>
     _END;
 
@@ -85,6 +95,13 @@
                         <input type = 'hidden' name = 'update' value = 'yes'>
                         <input type = 'hidden' name = 'un' value = '$v6'>
                         <input type = 'submit' value = 'UPDATE PERMISSIONS'>
+                    </form>
+                </td>
+                <td>
+                    <form action = 'permissionForm.php' method = 'post'>
+                        <input type = 'hidden' name = 'delete' value = 'yes'>
+                        <input type = 'hidden' name = 'un' value = '$v6'>
+                        <input type = 'submit' value = 'DELETE USER'>
                     </form>
                 </td>
             </tr>

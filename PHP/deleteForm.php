@@ -18,10 +18,12 @@
         die("Error connecting to DB" . $con -> connect_error);
 
     //Check if the page is loaded because the user submitted a Delete Form
-    if(!empty($_POST['delete']) && !empty($_POST['pCode'])){
+    if(isset($_POST['delete'])){
         $pCode = $_POST['pCode'];
         $query = "DELETE FROM parts WHERE partCode = $pCode;";
+
         $result = $con->query($query);
+        echo "<br>Query: $query<br>Result: $result<br>";
         
         if(!result) echo "Unable to delete";
     }
