@@ -7,16 +7,30 @@
     {
         $fname = $_SESSION['firstname'];
         $lname = $_SESSION['lastname'];
+        $email = $_SESSION['email'];
 
-        echo "Welcome back $fname $lname.<br>This is the Permission Update Form!<br>";
+        echo "<br><div style = 'text-align: center;'><h2>Welcome back $fname $lname.<br>This is the Permission Update Form!</h2></div>";
     }
 
     $con = new mysqli($hn, $username, $password, $db);
     
     //check connection to database
     if($con -> connect_error)
-        die("Error connecting to DB" . $con -> connect_error);
 
+    die("Error connecting to DB" . $con -> connect_error);
+
+    $query   = "SELECT * FROM users WHERE email='$email'";
+    $result  = $con->query($query);
+
+    if ($result->num_rows != 1) die("User not found");
+
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $pn  = $row['permissionNumber'];
+
+    if($pn != 8){
+        die("User not allowed to update Permissions");
+    }
+    
     //Check if the page is loaded because the user is adding a product
     if(isset($_POST['update'])){
         $permNumber = sanitizeMySQL($con, $_POST['pn']);
@@ -58,8 +72,8 @@
     $rows = $result->num_rows;
 
     echo <<<_END
-        <div class = "table-users">
-            <div class = "header"> Permissions </div>
+        <div>
+            <div class = "header">Permissions</div>
             <table cellspacing = "0">
                 <tr>
                     <td> First Name </td>
@@ -109,6 +123,15 @@
     }
 
     echo <<<_END
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href = "landingPage.php" style = "">Go Back</a><br></td>
+                    <td><a href = "logOut.php" style = "">Log Out</a><br></td>
+                </tr>
         </table>
         </body>
         </html>

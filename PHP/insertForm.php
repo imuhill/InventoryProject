@@ -7,8 +7,9 @@
     {
         $fname = $_SESSION['firstname'];
         $lname = $_SESSION['lastname'];
+        $email = $_SESSION['email'];
 
-        echo "Welcome back $fname $lname.<br>This is the Insert Form!<br>";
+        echo "<br><div style = 'text-align: center;'><h2>Welcome back $fname $lname.<br>This is the Insert Form!</h2></div>";
     }
 
     $con = new mysqli($hn, $username, $password, $db);
@@ -16,6 +17,24 @@
     //check connection to database
     if($con -> connect_error)
         die("Error connecting to DB" . $con -> connect_error);
+
+    $query   = "SELECT * FROM users WHERE email='$email'";
+    $result  = $con->query($query);
+
+    if ($result->num_rows != 1) die("User not found");
+
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $pn  = $row['permissionNumber'];
+
+    $query   = "SELECT * FROM permissions WHERE permissionNumber='$pn'";
+    $result  = $con->query($query);
+
+    $row = $result->fetch_array(MYSQLI_ASSOC);
+    $insert  = $row['inserting'];
+
+    if($insert != 1){
+        die("User not allowed to insert");
+    }
 
     //Check if the page is loaded because the user is adding a product
     if(isset($_POST['insert'])){
@@ -76,6 +95,10 @@
                         <td><input type = "submit" value = "ADD PRODUCT"></td>
                     </tr>
                 </form>
+                <tr>
+                    <td><a href = "landingPage.php" style = "">Go Back</a><br></td>
+                    <td><a href = "logOut.php" style = "">Log Out</a><br></td>
+                </tr>
             </table>
         </body>
     </html>

@@ -70,7 +70,7 @@
     }
 
     if($pn == 8){
-        echo "<a class = 'underlineHover' href = 'permissionForm.php'>Permissions</a><br>";
+        echo "<a class = 'underlineHover' href = 'permissionForm.php'>PERMISSIONS</a><br>";
     }
 
     echo <<< _END
