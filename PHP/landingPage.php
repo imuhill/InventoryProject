@@ -40,7 +40,7 @@
                 </div>
 
                 <div id = "login" class = "fadeIn second">
-                    <p><br>Hello, <b>$fname $lname</b>, welcome to the Landing Page.<br>Please select what action you would like to do.</p>
+                    <p><br>Hello! <b>$fname $lname</b> Welcome to the Landing Page.<br>Please select what action you would like to do.</p>
                 </div>
                 <div id="formFooter" class = "fadeIn third">
     _END;
