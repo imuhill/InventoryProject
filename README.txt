@@ -24,3 +24,5 @@ Here are the basic instructions for setting up the database for this to work:
         b. code .
     7. Once inside, go to the terminal and run this command to begin using the web application:
         a. sensible-browser http://localhost/InventoryProject/HTML/homePage.html
+
+The Superuser is lleonares@hbu.edu with password root.
