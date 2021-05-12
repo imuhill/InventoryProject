@@ -34,6 +34,7 @@
     //Check if the page is loaded because the user is adding a product
     if(isset($_POST['update'])){
         $permNumber = sanitizeMySQL($con, $_POST['pn']);
+        echo $permNumber;
         $uNum = sanitizeMySQL($con, $_POST['un']);
         $query = "UPDATE users SET permissionNumber = $permNumber WHERE userNumber = $uNum;";
 
